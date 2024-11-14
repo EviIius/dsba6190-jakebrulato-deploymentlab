@@ -90,23 +90,17 @@ resource "azurerm_mssql_database" "db" {
   server_id    = azurerm_mssql_server.ms.id
   collation    = "SQL_Latin1_General_CP1_CI_AS"
   license_type = "LicenseIncluded"
-  max_size_gb  = 2
+  max_size_gb  = 1
   sku_name     = "Basic"
-  enclave_type = "VBS"
 
   tags = {
     foo = "bar"
   }
+}
 
-  # prevent the possibility of accidental data loss
-  lifecycle {
-    prevent_destroy = true
-  }
-
-  resource "azurerm_mssql_virtual_network_rule" "vnetrule" {
+resource "azurerm_mssql_virtual_network_rule" "vnetrule" {
   name      = "sql-vnet-rule"
   server_id = azurerm_mssql_server.ms.id
   subnet_id = azurerm_subnet.subnet.id
-}
 }
 
