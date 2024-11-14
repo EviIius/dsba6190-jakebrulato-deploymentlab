@@ -72,10 +72,6 @@ resource "azurerm_subnet" "subnet" {
 
 // SQL Server
 
-provider "azurerm" {
-  features {}
-}
-
 resource "azurerm_mssql_server" "ms" {
   name                         = "jake-sqlserver"
   resource_group_name          = azurerm_resource_group.rg.name
