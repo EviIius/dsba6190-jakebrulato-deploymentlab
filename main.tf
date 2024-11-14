@@ -86,7 +86,7 @@ resource "azurerm_mssql_server" "ms" {
 }
 
 resource "azurerm_mssql_database" "db" {
-  name         = "sql-${var.class_name}-${var.student_name}-${var.environment}-${var.location}-${random_integer.deployment_id_suffix.result"}
+  name         = "sql-${var.class_name}-${var.student_name}-${var.environment}-${var.location}-${random_integer.deployment_id_suffix.result}"
   server_id    = azurerm_mssql_server.ms.id
   collation    = "SQL_Latin1_General_CP1_CI_AS"
   license_type = "LicenseIncluded"
